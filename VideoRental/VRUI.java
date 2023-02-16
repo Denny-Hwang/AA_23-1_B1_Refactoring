@@ -20,7 +20,7 @@ public class VRUI {
 				case 0: quit = true ; break ;
 				case 1: ui.listCustomers() ; break ;
 				case 2: ui.listVideos() ; break ;
-				case 3: ui.register("customer") ; break ;
+				case 3: ui.register(Const.CUSTOMER) ; break ;
 				case 4: ui.register("video") ; break ;
 				case 5: ui.rentVideo() ; break ;
 				case 6: ui.returnVideo() ; break ;
@@ -182,7 +182,7 @@ public class VRUI {
 	}
 
 	public void register(String object) {
-		if ( object.equals("customer") ) {
+		if ( object.equals(Const.CUSTOMER) ) {
 			System.out.println("Enter customer name: ") ;
 			String name = scanner.next();
 			Customer customer = new Customer(name) ;
