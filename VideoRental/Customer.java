@@ -66,12 +66,12 @@ public class Customer {
 
 			eachPoint++;
 
-			if ((each.getVideo().getPriceCode() == Video.NEW_RELEASE) ){
+			if ((each.getVideo().getPriceCode() == Video.NEW_RELEASE) )
 				eachPoint++;
-			}
-			if ( daysRented > each.getDaysRentedLimit() ){
+			
+			if ( daysRented > each.getDaysRentedLimit() )
 				eachPoint -= Math.min(eachPoint, each.getVideo().getLateReturnPointPenalty()) ;
-			}
+			
 			result += "\t" + each.getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
 					+ "\tPoint: " + eachPoint + "\n";
 
