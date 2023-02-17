@@ -125,10 +125,7 @@ public class Controller {
         }
     }
 
-    public void rentVideo() {
-        System.out.println("Enter customer name: ");
-        String customerName = scanner.next();
-
+    public Customer getCustomerByName(String customerName) {
         Customer foundCustomer = null;
         for (Customer customer : customers) {
             if (customer.getName().equals(customerName)) {
@@ -137,11 +134,10 @@ public class Controller {
             }
         }
 
-        if (foundCustomer == null) return;
-
-        System.out.println("Enter video title to rent: ");
-        String videoTitle = scanner.next();
-
+        if (foundCustomer == null) return null;
+        else return foundCustomer;
+    }
+    public Video getVideoByName(String videoTitle) {
         Video foundVideo = null;
         for (Video video : videos) {
             if (video.getTitle().equals(videoTitle) && video.isRented() == false) {
@@ -150,14 +146,27 @@ public class Controller {
             }
         }
 
-        if (foundVideo == null) return;
-
+        if (foundVideo == null) return null;
+        else return foundVideo;
+    }
+    public void rentVideoToCustomer(Customer foundCustomer,Video foundVideo) {
         Rental rental = new Rental(foundVideo);
         foundVideo.setRented(true);
 
         List<Rental> customerRentals = foundCustomer.getRentals();
         customerRentals.add(rental);
         foundCustomer.setRentals(customerRentals);
+    }
+    public void rentVideo() {
+    	//scanner
+        System.out.println("Enter customer name: ");
+        String customerName = scanner.next();
+        System.out.println("Enter video title to rent: ");
+        String videoTitle = scanner.next();
+        
+        Customer foundCustomer = getCustomerByName(customerName);
+        Video foundVideo = getVideoByName(videoTitle);
+        rentVideoToCustomer(foundCustomer,foundVideo);
     }
 
     public void registerCustomer() {
