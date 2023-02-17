@@ -157,16 +157,14 @@ public class Controller {
         customerRentals.add(rental);
         foundCustomer.setRentals(customerRentals);
     }
-    public void rentVideo() {
-    	//scanner
-        System.out.println("Enter customer name: ");
-        String customerName = scanner.next();
+   
+    public List<String> scanInfo() {
+    	List<String> info = new ArrayList<String>();
+    	System.out.println("Enter customer name: ");
+        info.add(scanner.next());
         System.out.println("Enter video title to rent: ");
-        String videoTitle = scanner.next();
-        
-        Customer foundCustomer = getCustomerByName(customerName);
-        Video foundVideo = getVideoByName(videoTitle);
-        rentVideoToCustomer(foundCustomer,foundVideo);
+        info.add(scanner.next());
+        return info;
     }
 
     public void registerCustomer() {

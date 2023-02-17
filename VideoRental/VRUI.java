@@ -13,7 +13,12 @@ public class VRUI {
 				case 2: controller.listVideos() ; break ;
 				case 3: controller.registerCustomer() ; break ;
 				case 4: controller.registerVideo() ; break ;
-				case 5: controller.rentVideo() ; break ;
+				case 5: List<String> info =new ArrayList<String>();
+					info = controller.scanInfo();
+					Customer foundCustomer = controller.getCustomerByName(info.get(0));
+			        Video foundVideo = controller.getVideoByName(info.get(1));
+			        controller.rentVideoToCustomer(foundCustomer,foundVideo);
+					break ;
 				case 6: controller.returnVideo() ; break ;
 				case 7: controller.getCustomerReport() ; break;
 				case 8: controller.clearRentals() ; break ;
