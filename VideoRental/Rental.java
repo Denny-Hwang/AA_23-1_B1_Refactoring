@@ -3,12 +3,14 @@ import java.util.Date;
 public class Rental {
 	private Video video ;
 	private int status ; // 0 for Rented, 1 for Returned
+	public static final int STATUS_RENTED = 0;
+	public static final int STATUS_RETURNED = 1;
 	private Date rentDate ;
 	private Date returnDate ;
 
 	public Rental(Video video) {
 		this.video = video ;
-		status = 0 ;
+		status = STATUS_RENTED ;
 		rentDate = new Date() ;
 	}
 
@@ -25,8 +27,8 @@ public class Rental {
 	}
 
 	public void returnVideo() {
-		if ( status == 1 ) {
-			this.status = 1;
+		if ( status == STATUS_RETURNED ) {
+			this.status = STATUS_RETURNED;
 			returnDate = new Date() ;
 		}
 	}
@@ -47,7 +49,7 @@ public class Rental {
 		int daysRented ;
 		long diff;
 
-		if (getStatus() == 1) { // returned Video
+		if (getStatus() == STATUS_RETURNED) {
 			diff = returnDate.getTime() - rentDate.getTime();
 // 			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		} else { // not yet returned
